@@ -1,4 +1,0 @@
-entrypoint = "index.html"
-
-[env]
-PORT = "8000"
