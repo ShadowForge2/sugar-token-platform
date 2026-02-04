@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 // Bot Configuration
 const BOT_TOKEN = '8586914157:AAGp9B3j_1o1oBtSgsBV9WHVirDAsEJJr3o';
 const BOT_USERNAME = 'sugargent_Bot';
-const WEBAPP_URL = 'https://sugar-token-platform--YOUR_NEW_USERNAME.replit.app';
+const WEBAPP_URL = 'https://sugar-token-platform--ShadowForge.replit.app';
 
 // Middleware
 app.use(bodyParser.json());
