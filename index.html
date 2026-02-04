@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>$SUGAR - Earn Sweet Rewards on Telegram</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-cube"></i>
+                <span>$SUGAR</span>
+            </div>
+            <nav class="nav">
+                <a href="#features">Features</a>
+                <a href="#tasks">Tasks</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#join">Join Now</a>
+                <a href="#" id="dashboard-nav-link" style="display: none;" onclick="showDashboard()">Dashboard</a>
+            </nav>
+            <div class="user-menu" id="user-menu">
+                <button class="btn btn-secondary" onclick="showTelegramLogin()" id="login-btn">
+                    <i class="fab fa-telegram"></i>
+                    Login with Telegram
+                </button>
+                <div class="user-profile" id="user-profile" style="display: none;">
+                    <div class="user-avatar" id="user-avatar">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name" id="user-name">Loading...</span>
+                        <button class="logout-btn" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Earn $SUGAR Tokens on Telegram</h1>
+                    <p class="hero-subtitle">Join our community, complete tasks, and get rewarded with $SUGAR tokens. 10 billion total reward pool distributed to eligible users!</p>
+                    
+                    <!-- Wallet Address Section - Always Visible -->
+                    <div class="wallet-section">
+                        <div class="wallet-header">
+                            <h3><i class="fas fa-wallet"></i> Connect Your Solana Wallet</h3>
+                            <p>Enter your wallet address to start earning $SUGAR tokens</p>
+                        </div>
+                        
+                        <div class="wallet-input-group">
+                            <input type="text" id="hero-wallet-address" placeholder="Enter your Solana wallet address (e.g., 9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM)" />
+                            <button class="btn btn-primary" onclick="saveHeroWalletAddress()">
+                                <i class="fas fa-save"></i>
+                                Save Wallet
+                            </button>
+                        </div>
+                        <div id="hero-wallet-status" class="wallet-status-message"></div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-large" onclick="showTelegramLogin()">
+                            <i class="fab fa-telegram"></i>
+                            Login with Telegram
+                        </button>
+                        <a href="#join" class="btn btn-secondary btn-large">
+                            <i class="fas fa-rocket"></i>
+                            Start Earning
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="token-animation">
+                        <div class="token">$SUGAR</div>
+                        <div class="particles"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="features">
+                <h2>Why Choose $SUGAR?</h2>
+                <div class="token-value-info">
+                    <div class="value-card">
+                        <h3>Current Token Value</h3>
+                        <div class="value-display">
+                            <span class="token-symbol">1 $SUGAR</span>
+                            <span class="equals">=</span>
+                            <span class="usd-value">$0.000026 USD</span>
+                        </div>
+                        <p>Token value may vary based on market conditions</p>
+                    </div>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Refer Friends</h3>
+                        <p>Invite friends to earn bonus $SUGAR tokens for each successful referral</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>Simple Tasks</h3>
+                        <p>Complete easy social media tasks and engage with the community</p>
+                    </div>
+                    <div class="feature-card clickable" onclick="scrollToWallet()">
+                        <div class="feature-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3>Solana Integration</h3>
+                        <p>Connect your Solana wallet to receive and manage your $SUGAR tokens</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="how-it-works" class="how-it-works">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Join Telegram</h3>
+                            <p>Join our official Telegram community</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Connect Wallet</h3>
+                            <p>Enter your Solana wallet address below</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Complete Tasks</h3>
+                            <p>Participate in activities and refer friends</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Get Rewarded</h3>
+                            <p>Receive $SUGAR tokens directly to your wallet</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tasks" class="tasks-section">
+                <h2>Complete Tasks & Earn $SUGAR</h2>
+                <div class="tasks-grid">
+                    <div class="task-card" id="telegram-task">
+                        <div class="task-header">
+                            <div class="task-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <div class="task-reward">
+                                <span class="reward-amount">+1000</span>
+                                <span class="reward-token">$SUGAR</span>
+                            </div>
+                        </div>
+                        <div class="task-content">
+                            <h3>Join Telegram Group & Channel</h3>
+                            <p>Join our official Telegram community and channel to stay updated and earn 1000 $SUGAR tokens (distributed at campaign end)!</p>
+                            <div class="task-status">
+                                <span class="status-badge status-pending" id="telegram-status">Pending</span>
+                                <span class="task-type">One-time reward</span>
+                            </div>
+                        </div>
+                        <div class="task-action">
+                            <button class="btn btn-primary" onclick="completeTelegramTask()" id="telegram-btn">
+                                <i class="fab fa-telegram"></i>
+                                Join & Earn
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <div class="task-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="task-reward">
+                                <span class="reward-amount">+500</span>
+                                <span class="reward-token">$SUGAR</span>
+                            </div>
+                        </div>
+                        <div class="task-content">
+                            <h3>Refer Friends</h3>
+                            <p>Invite friends to join $SUGAR and earn 500 tokens for each successful referral (distributed at campaign end)!</p>
+                            <div class="task-status">
+                                <span class="status-badge status-pending">Active</span>
+                                <span class="task-type">Unlimited</span>
+                            </div>
+                        </div>
+                        <div class="task-action">
+                            <button class="btn btn-secondary" onclick="copyReferralLink()">
+                                <i class="fas fa-share"></i>
+                                Share Referral
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <div class="task-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="task-reward">
+                                <span class="reward-amount">+50</span>
+                                <span class="reward-token">$SUGAR</span>
+                            </div>
+                        </div>
+                        <div class="task-content">
+                            <h3>React & Engage</h3>
+                            <p>React (1 $SUGAR) and engage (3 $SUGAR) with posts in our Telegram Group & Channel to earn rewards!</p>
+                            <div class="task-status">
+                                <span class="status-badge status-pending" id="engage-status">0/10 actions</span>
+                                <span class="task-type">Repeatable</span>
+                            </div>
+                        </div>
+                        <div class="task-action">
+                            <button class="btn btn-secondary" onclick="trackEngagement()">
+                                <i class="fas fa-chart-line"></i>
+                                Track Activity
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <div class="task-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="task-reward">
+                                <span class="reward-amount">+100</span>
+                                <span class="reward-token">$SUGAR</span>
+                            </div>
+                        </div>
+                        <div class="task-content">
+                            <h3>Daily Engagement</h3>
+                            <p>Participate in Telegram Group & Channel discussions and stay active to earn daily rewards (distributed at campaign end)!</p>
+                            <div class="task-status">
+                                <span class="status-badge status-pending" id="daily-status">Daily</span>
+                                <span class="task-type">Repeatable</span>
+                            </div>
+                        </div>
+                        <div class="task-action">
+                            <button class="btn btn-secondary" disabled>
+                                <i class="fas fa-clock"></i>
+                                Available Daily
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="total-earnings">
+                    <div class="earnings-card">
+                        <h3>Pending Rewards</h3>
+                        <div class="earnings-amount">
+                            <span class="amount" id="pending-rewards">0</span>
+                            <span class="token">$SUGAR</span>
+                            <span class="usd-equivalent" id="pending-usd">($0.00)</span>
+                        </div>
+                        <p>10,000,000,000 $SUGAR total reward pool distributed to eligible users at campaign end!</p>
+                    </div>
+                </div>
+                
+                <!-- Engagement Progress Section -->
+                <div class="engagement-progress">
+                    <h3>Your Telegram Group & Channel Engagement</h3>
+                    <div class="progress-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="total-likes">0</span>
+                                <span class="stat-label">Total Likes</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="total-comments">0</span>
+                                <span class="stat-label">Comments</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="total-reactions">0</span>
+                                <span class="stat-label">Reactions</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="pending-earnings">0</span>
+                                <span class="stat-label">Pending $SUGAR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Dashboard Section -->
+            <section id="dashboard" class="dashboard-section" style="display: none;">
+                <div class="dashboard-container">
+                    <h2>Your Personal Dashboard</h2>
+                    <p class="dashboard-subtitle">Track your $SUGAR earnings and progress</p>
+                    
+                    <div class="dashboard-grid">
+                        <!-- User Info Card -->
+                        <div class="dashboard-card user-info-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-user"></i> User Profile</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="user-profile-info">
+                                    <div class="user-avatar-large" id="dashboard-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="user-details">
+                                        <h4 id="dashboard-username">Telegram User</h4>
+                                        <p id="dashboard-wallet">No wallet connected</p>
+                                        <p id="dashboard-member-since">Member since: Loading...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rewards Overview Card -->
+                        <div class="dashboard-card rewards-overview-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-coins"></i> Rewards Overview</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="rewards-stats">
+                                    <div class="reward-stat">
+                                        <span class="reward-label">Total Earned</span>
+                                        <span class="reward-value" id="dashboard-total-earned">0</span>
+                                        <span class="reward-token">$SUGAR</span>
+                                    </div>
+                                    <div class="reward-stat">
+                                        <span class="reward-label">Pending</span>
+                                        <span class="reward-value" id="dashboard-pending">0</span>
+                                        <span class="reward-token">$SUGAR</span>
+                                    </div>
+                                    <div class="reward-stat">
+                                        <span class="reward-label">Eligibility</span>
+                                        <span class="reward-value" id="dashboard-eligibility">Not Eligible</span>
+                                    </div>
+                                </div>
+                                <div class="eligibility-progress" id="dashboard-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="dashboard-progress-fill"></div>
+                                    </div>
+                                    <p><span id="dashboard-progress-text">0</span> / 10,000 $SUGAR</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task Progress Card -->
+                        <div class="dashboard-card tasks-progress-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-tasks"></i> Task Progress</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="task-list">
+                                    <div class="task-item" id="dashboard-telegram-task">
+                                        <div class="task-info">
+                                            <i class="fab fa-telegram"></i>
+                                            <span>Join Telegram Community</span>
+                                        </div>
+                                        <span class="task-status" id="dashboard-telegram-status">Pending</span>
+                                    </div>
+                                    <div class="task-item" id="dashboard-group-task">
+                                        <div class="task-info">
+                                            <i class="fas fa-users"></i>
+                                            <span>Subscribe to Group</span>
+                                        </div>
+                                        <span class="task-status" id="dashboard-group-status">Pending</span>
+                                    </div>
+                                    <div class="task-item" id="dashboard-channel-task">
+                                        <div class="task-info">
+                                            <i class="fas fa-broadcast-tower"></i>
+                                            <span>Subscribe to Channel</span>
+                                        </div>
+                                        <span class="task-status" id="dashboard-channel-status">Pending</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Engagement Stats Card -->
+                        <div class="dashboard-card engagement-stats-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-line"></i> Engagement Stats</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="engagement-grid">
+                                    <div class="engagement-stat">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-smile"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-number" id="dashboard-reactions">0</span>
+                                            <span class="stat-label">Reactions</span>
+                                        </div>
+                                    </div>
+                                    <div class="engagement-stat">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-number" id="dashboard-likes">0</span>
+                                            <span class="stat-label">Likes</span>
+                                        </div>
+                                    </div>
+                                    <div class="engagement-stat">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-comment"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-number" id="dashboard-comments">0</span>
+                                            <span class="stat-label">Comments</span>
+                                        </div>
+                                    </div>
+                                    <div class="engagement-stat">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-number" id="dashboard-referrals">0</span>
+                                            <span class="stat-label">Referrals</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Referral Stats Card -->
+                        <div class="dashboard-card referral-stats-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-link"></i> Referral Stats</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="referral-info">
+                                    <div class="referral-code-display">
+                                        <label>Your Referral Code:</label>
+                                        <div class="referral-code-box">
+                                            <span id="dashboard-referral-code">YOUR_CODE</span>
+                                            <button class="btn-small" onclick="copyReferralLink()">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="referral-stats">
+                                        <div class="referral-stat">
+                                            <span class="stat-label">Total Referrals:</span>
+                                            <span class="stat-value" id="dashboard-total-referrals">0</span>
+                                        </div>
+                                        <div class="referral-stat">
+                                            <span class="stat-label">Completed Referrals:</span>
+                                            <span class="stat-value" id="dashboard-completed-referrals">0</span>
+                                        </div>
+                                        <div class="referral-stat">
+                                            <span class="stat-label">Referral Earnings:</span>
+                                            <span class="stat-value" id="dashboard-referral-earnings">0 $SUGAR</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions Card -->
+                        <div class="dashboard-card quick-actions-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary" onclick="openTelegramLink(CAMPAIGN_CONFIG.telegram.groupUrl)">
+                                        <i class="fab fa-telegram"></i>
+                                        Open Community
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="trackEngagement()">
+                                        <i class="fas fa-plus"></i>
+                                        Track Engagement
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="copyReferralLink()">
+                                        <i class="fas fa-share"></i>
+                                        Share Referral
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Footer -->
+                    <div class="dashboard-footer">
+                        <div class="last-updated">
+                            <i class="fas fa-clock"></i>
+                            Last updated: <span id="dashboard-last-updated">Just now</span>
+                        </div>
+                        <button class="btn btn-small" onclick="refreshDashboard()">
+                            <i class="fas fa-sync"></i>
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="join" class="join-section">
+                <div class="join-container">
+                    <h2>Start Earning $SUGAR Today</h2>
+                    <p class="join-subtitle">Login with Telegram and connect your Solana wallet to start earning</p>
+                    
+                    <!-- Telegram Login Required Notice -->
+                    <div id="login-required" class="login-notice">
+                        <div class="notice-content">
+                            <i class="fab fa-telegram"></i>
+                            <h3>Telegram Login Required</h3>
+                            <p>You must login with your Telegram account first to access wallet features and complete tasks.</p>
+                            <button class="btn btn-primary" onclick="showTelegramLogin()">
+                                <i class="fab fa-telegram"></i>
+                                Login with Telegram
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Wallet Form (Hidden until login) -->
+                    <div id="wallet-form" class="wallet-form" style="display: none;">
+                        <div class="user-welcome">
+                            <h3>Welcome, <span id="welcome-user">User</span>!</h3>
+                            <p>Connect your Solana wallet to receive $SUGAR tokens</p>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="wallet-address">Solana Wallet Address</label>
+                            <input type="text" id="wallet-address" placeholder="Enter your Solana wallet address (e.g., 9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM)" />
+                            <button class="btn btn-primary" onclick="saveWalletAddress()">
+                                <i class="fas fa-save"></i>
+                                Save Address
+                            </button>
+                        </div>
+                        <div id="wallet-status" class="status-message"></div>
+                    </div>
+
+                    <!-- Referral Section (Hidden until login) -->
+                    <div id="referral-section" class="referral-section" style="display: none;">
+                        <h3>Your Referral Link</h3>
+                        <div class="referral-container">
+                            <input type="text" id="referral-link" readonly value="https://t.me/sugar_token?ref=YOUR_ID" />
+                            <button class="btn btn-secondary" onclick="copyReferralLink()">
+                                <i class="fas fa-copy"></i>
+                                Copy
+                            </button>
+                        </div>
+                        <p class="referral-info">Share this link and earn 10% bonus $SUGAR for each friend who joins!</p>
+                    </div>
+
+                    <div class="telegram-cta">
+                        <a href="javascript:void(0)" onclick="openTelegramLink('https://t.me/+J4OWKimg7co3ZGM8')" class="btn btn-primary btn-large">
+                            <i class="fab fa-telegram"></i>
+                            Join Official Telegram Group
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Telegram Login Modal -->
+            <div class="modal" id="telegram-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Login Required</h3>
+                        <button class="modal-close" onclick="closeTelegramLogin()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login-content">
+                            <div class="login-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <h4>Login with Telegram Required</h4>
+                            <p>You need to login with your Telegram account to access $SUGAR features and earn rewards.</p>
+                            <div class="login-actions">
+                                <button class="btn btn-primary" onclick="redirectToTelegramLogin()">
+                                    <i class="fab fa-telegram"></i>
+                                    Login with Telegram
+                                </button>
+                                <button class="btn btn-secondary" onclick="closeTelegramLogin()">
+                                    <i class="fas fa-times"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <i class="fas fa-cube"></i>
+                        <span>$SUGAR</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="javascript:void(0)" onclick="openTelegramLink('https://t.me/+J4OWKimg7co3ZGM8')">
+                            <i class="fab fa-telegram"></i>
+                            Telegram
+                        </a>
+                        <a href="https://twitter.com/sugar_token" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                            Twitter
+                        </a>
+                    </div>
+                    <div class="footer-copyright">
+                        <p>&copy; 2024 $SUGAR Token. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+                        Twitter
+                    </a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 $SUGAR Token. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
